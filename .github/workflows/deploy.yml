@@ -6,7 +6,9 @@ on:
       - main # Trigger workflow on pushes to the main branch
 
 permissions:
-  contents: write # Grants write access for repository contents (required for deployment)
+  contents: write # Required for accessing repository contents
+  pages: write    # Required for deploying to GitHub Pages
+  id-token: write # Required for authentication
 
 jobs:
   build-and-deploy:
@@ -31,13 +33,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Step 5: Create .nojekyll file
-      - name: Create .nojekyll file
-        run: echo "" > ./build/.nojekyll
+      # Step 5: Upload artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./build # Directory where `npm run build` outputs static files
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build # Directory where `npm run build` outputs static files
+        uses: actions/deploy-pages@v1
