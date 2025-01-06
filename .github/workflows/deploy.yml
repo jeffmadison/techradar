@@ -3,10 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # Trigger workflow on pushes to the main branch
 
 permissions:
-  contents: write # Grants write access for repository contents
+  contents: write # Grants write access for repository contents (required for deployment)
 
 jobs:
   build-and-deploy:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.17.0' # Update to a compatible version of Node.js
+          node-version: '18' # Use Node.js version >= 18.17.0 for Next.js compatibility
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -31,9 +31,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Step 5: Deploy to GitHub Pages
+      # Step 5: Create .nojekyll file
+      - name: Create .nojekyll file
+        run: echo "" > ./build/.nojekyll
+
+      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./build # Directory where `npm run build` outputs static files
