@@ -12,7 +12,7 @@
   },
   "sections": ["radar", "tags", "list"],
   "colors": {
-    "foreground": "#fcf2e6",
+    "foreground": "#296582",
     "background": "#ffffff",
     "highlight": "#d4a373",
     "content": "#fff",
@@ -32,19 +32,19 @@
       "id": "methods-and-patterns",
       "title": "Methods & Patterns",
       "description": "Key software development methods and design patterns, covering everything from continuous integration and testing to architecture.",
-      "color": "#588157"
+      "color": "#029df7"
     },
     {
       "id": "platforms-and-operations",
       "title": "Platforms & Operations",
       "description": "Technologies and tools for software and infrastructure operations, including platforms and services for managing and scaling applications.",
-      "color": "#3f633e"
+      "color": "#029df7"
     },
     {
       "id": "tools",
       "title": "Tools",
       "description": "A range of software tools, from simple productivity enhancers to comprehensive project solutions, catering to various project needs.",
-      "color": "#40713f"
+      "color": "#029df7"
     }
   ],
   "rings": [
