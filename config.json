@@ -1,6 +1,6 @@
 {
-  "basePath": "/",
-  "baseUrl": "https://jeffmadison.github.io/techradar",
+  "basePath": "/techradar",
+  "baseUrl": "https://jeffmadison.github.io",
   "editUrl": "",
   "logoFile": "logo.svg",
   "jsFile": "",
